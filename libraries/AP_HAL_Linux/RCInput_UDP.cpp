@@ -1,7 +1,9 @@
+#define __STDC_FORMAT_MACROS
 #include <AP_HAL/AP_HAL.h>
 
 #if CONFIG_HAL_BOARD == HAL_BOARD_LINUX
 #include "RCInput_UDP.h"
+#include <inttypes.h>
 #include <stdio.h>
 
 extern const AP_HAL::HAL& hal;
@@ -39,7 +41,7 @@ void LinuxRCInput_UDP::_timer_tick(void)
         }
         if (_last_buf_ts != 0 &&
             (delay = _buf.timestamp_us - _last_buf_ts) > 100000) {
-            hal.console->printf("no rc cmds received for %llu\n", delay);
+            hal.console->printf("no rc cmds received for %" PRIu64 "\n", delay);
         }
         _last_buf_ts = _buf.timestamp_us;
 
