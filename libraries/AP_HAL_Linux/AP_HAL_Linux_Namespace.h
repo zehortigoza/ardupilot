@@ -42,6 +42,7 @@ namespace Linux {
     class ToneAlarm;
     class Heat;
     class HeatPwm;
+    class PerfManager;
 }
 
 #endif // __AP_HAL_LINUX_NAMESPACE_H__
