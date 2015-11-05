@@ -26,6 +26,14 @@ COPTS           =   -ffunction-sections -fdata-sections -fsigned-char
 
 ASOPTS          =   -x assembler-with-cpp 
 
+# features: TODO detect dependecy and make them optional
+HAVE_SYSTEMD=0
+
+ifeq ($(HAVE_SYSTEMD),1)
+DEFINES        += -DHAVE_SYSTEMD=1
+LIBS           += -lsystemd
+endif
+
 # disable as this breaks distcc
 #ifneq ($(SYSTYPE),Darwin)
 #LISTOPTS        =   -adhlns=$(@:.o=.lst)
