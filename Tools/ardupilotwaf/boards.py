@@ -192,6 +192,14 @@ class linux(Board):
             'm',
             'rt',
         ]
+
+        r = cfg.check_cxx(lib="systemd",
+            define_name="HAVE_LIBSYSTEMD",
+                 msg="Checking for HAVE_LIBSYSTEMD",
+                 mandatory=False)
+        if r:
+            env.LIB += ['systemd']
+
         env.LINKFLAGS += ['-pthread',]
         env.AP_LIBRARIES = [
             'AP_HAL_Linux',
